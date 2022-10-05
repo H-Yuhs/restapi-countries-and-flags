@@ -5,7 +5,7 @@ const Findcountry = () => {
    const initialRender = useRef(true)
    const [searchValue, setSearchvalue] = useState()
    const [debouncedInput, setDebouncedInput] = useState(searchValue);
-   const { setCountries, setIsError, setIsLoading, setKey } = ContextUser()
+   const { setCountries, setIsError, setIsLoading, setKey, returnDefault } = ContextUser()
    useEffect(() => {
       const timer = setTimeout(() => setSearchvalue(debouncedInput), 500);
       return () => clearTimeout(timer);
@@ -27,7 +27,7 @@ const Findcountry = () => {
                setIsLoading(false)
                setIsError(false)
             } else {
-               setCountries([])
+               returnDefault()
             }
          })
          .catch(err => console.error(err))

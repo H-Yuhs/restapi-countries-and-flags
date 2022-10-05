@@ -30,6 +30,7 @@ export function useFetch(url) {
    useEffect(() => {
       getCountries()
    }, [key])
-   return { countries, isLoading, key, isError, setKey, setCountries, setIsError, setIsLoading }
+   const returnDefault = () => getCountries()
+   return { countries, isLoading, key, isError, setKey, setCountries, setIsError, setIsLoading, returnDefault }
 }
 

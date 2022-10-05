@@ -4,9 +4,9 @@ import { useContext } from "react"
 const url = `https://restcountries.com/v3.1/`
 const ContextCreator = React.createContext()
 export const ContextProvider = ({ children }) => {
-   const { countries, isLoading, key, isError, setKey, setCountries, setIsError, setIsLoading } = useFetch(url)
+   const { countries, isLoading, key, isError, setKey, setCountries, setIsError, setIsLoading, returnDefault } = useFetch(url)
    return (
-      <ContextCreator.Provider value={{ countries, isLoading, key, isError, setKey, setCountries, setIsError, setIsLoading }}>
+      <ContextCreator.Provider value={{ countries, isLoading, key, isError, setKey, setCountries, setIsError, setIsLoading, returnDefault }}>
 
          {children}
       </ContextCreator.Provider>
