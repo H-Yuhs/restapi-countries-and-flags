@@ -75,7 +75,7 @@ const Countryinfo = () => {
                               <Link to={`/country/${bdr.cca3}`}>{bdr.name.common}</Link>
                            </span>
                         )
-                           : 'This country has no borders'}
+                           : ' This country has no borders'}
                      </div>
                   </div>
 
