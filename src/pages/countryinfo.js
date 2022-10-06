@@ -36,7 +36,7 @@ const Countryinfo = () => {
          })
          .catch(err => console.error(err))
    }, [id])
-   const getBorders = async ({ bordersNames }) => {
+   const getBorders = async (bordersNames) => {
       fetch(`https://restcountries.com/v3.1/alpha?codes=${bordersNames.join(',')}`)
          .then(response => {
             if (response.status >= 200 && response.status <= 299)
@@ -70,14 +70,20 @@ const Countryinfo = () => {
                   <div className='country__borders'>
                      <div className="border__list" >
                         Borders Countries:
-                        {country[0].borders ? country[0].borders.map((ctr, i) =>
-                           <span key={i}><Link to={`/country/${ctr}`}>{countries.map(ctm => ctm.cca3 === ctr && ctm.name.common)}</Link></span>)
+                        {borders ? borders.map((bdr, i) =>
+                           <span key={i}>
+                              <Link to={`/country/${bdr.cca3}`}>{bdr.name.common}</Link>
+                           </span>
+                        )
                            : 'This country has no borders'}
                      </div>
                   </div>
 
                </div>
             </div>
+            <footer className='footer'>
+               <h3>Coded by <a href="https://github.com/H-Yuhs" target='_blank' rel='noreferrer'>Hassan Adeyemi</a> </h3>
+            </footer>
          </div >}
       </>
    )

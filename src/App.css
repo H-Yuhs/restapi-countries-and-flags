@@ -38,8 +38,16 @@
   background: transparent;
   border: none;
 }
+.btn--switch svg{
+  font-size: 2.5rem;
+}
 .container{
   padding:1.5em 2em;
+}
+.country__container{
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 .find{
   display: flex;
@@ -114,20 +122,26 @@
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: auto;
   gap: 1rem;
-  justify-items: center;
+  /* justify-items: center; */
   /* align-items: center; */
   /* height: 60%; */
   margin-top: 2rem;
 }
 .country__indie img{
-  /* height:350px; */
+  height:auto;
   width: 100%;
+  
 }
 .country{
   align-self: center;
   display: flex;
   flex-direction: column;
   gap:2.5rem;
+  font-size: .875rem;
+  font-weight: 700;
+}
+h2.country__name{
+  font-size: 1.125rem;
 }
 .country__info{
   display: grid;
@@ -135,23 +149,38 @@
   grid-template-rows: auto;
   gap:.5rem;
 }
+.country__info span{
+  font-weight: 600;
+}
 .country__borders>div{
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: .5rem;
+  flex-wrap: wrap;
   font-size: .8rem;
 }
 .country__borders .border__list span{
   padding: .2rem .6rem;
-  border: 1px solid var(--lightModeInput);
-  box-shadow: 0 0 2px var(--lightModeInput);
+  /* border: 1px solid var(--lightModeInput); */
+  box-shadow: 0 8px 6px -3px rgba(0, 0, 0, .1);
   border-radius:.15rem;
 }
 .country__borders .border__list span a{
   font-weight: 800;
   text-decoration: none;
   color:var(--lightModeText)
-}.dark .wrapper {
+}
+.footer{
+  align-self: center;
+}
+.footer, .footer a{
+  color: var(--lightModeText);
+  text-decoration: none;
+}
+.footer h3,.footer a{
+  font-size: .8rem;
+}
+.dark .wrapper {
   background: var(--darkModeBackground);
 }
 .dark .navbar{
@@ -170,11 +199,16 @@
 .dark .btn--switch svg{
   fill: var(--white);
 }
+.dark form {
+  box-shadow: 0 0 5px var(--lightModeText)
+}
+.dark .find form svg{
+  fill:var(--white)
+}
 .dark :is(.find input,
 .find select){
-  background: var(--darkModeElement);
   color: var(--white);
-  box-shadow: 0 0 5px  var(--lightModeText);
+  background: var(--darkModeBackground);
 }
 .dark .find input::placeholder{
   color: var(--white);
@@ -185,18 +219,32 @@
 }
 .dark .card a,.dark .btn--back a{
   color: var(--white);
-
+}
+.dark .country__info span {
+  color: var(--lightModeInput)
 }
 .dark .country__borders .border__list span {
   background: var(--darkModeElement);
-  box-shadow: 0 0 2px var(--lightModeInput);
+  border: none;
   border-radius: .15rem;
 }
 
 .dark .country__borders .border__list span a {
   color: var(--lightModeInput)
 }
+.dark .footer, .dark .footer a{
+  color: var(--white);
+}
 
+@media screen and (max-width:489px){
+  .navbar{
+    font-size: .8rem;
+    gap: 1.5rem;
+  }
+    .country__info{
+      grid-template-columns: 1fr;
+    }
+}
 @media screen and (max-width:639px) {
   .find{
     flex-direction: column;
@@ -204,5 +252,12 @@
   }
     .find form:nth-child(2){
       align-self: start;
+    }
+  
+}
+@media screen  and (max-width:978px){
+  .country__indie {
+      grid-template-columns: 1fr;
+      gap: 2rem;
     }
 }
