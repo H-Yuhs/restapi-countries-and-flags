@@ -70,7 +70,7 @@ const Countryinfo = () => {
                   <div className='country__borders'>
                      <div className="border__list" >
                         Borders Countries:
-                        {borders ? borders.map((bdr, i) =>
+                        {country.borders ? borders.map((bdr, i) =>
                            <span key={i}>
                               <Link to={`/country/${bdr.cca3}`}>{bdr.name.common}</Link>
                            </span>
