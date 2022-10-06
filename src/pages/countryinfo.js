@@ -5,12 +5,11 @@ import { ContextUser } from '../hooks/context'
 import { useParams, Link } from 'react-router-dom'
 const Countryinfo = () => {
    const [country, setCountry] = useState([])
-   // const [borders, setBorders] = useState()
+   const [borders, setBorders] = useState([])
    const [isLoading, setIsLoading] = useState(true)
    const [isError, setIsError] = useState(false)
    const { countries } = ContextUser()
    const { id } = useParams()
-
    useEffect(() => {
       fetch(`https://restcountries.com/v3.1/alpha/${id}`)
          .then(response => {
@@ -23,7 +22,12 @@ const Countryinfo = () => {
          })
          .then(response => {
             if (response) {
+               console.log(response)
                setCountry(response)
+               if (response[0].borders) {
+                  console.log(response[0].borders.join(','))
+                  getBorders(response[0].borders)
+               }
                setIsLoading(false)
                setIsError(false)
             } else {
@@ -32,6 +36,16 @@ const Countryinfo = () => {
          })
          .catch(err => console.error(err))
    }, [id])
+   const getBorders = async ({ bordersNames }) => {
+      fetch(`https://restcountries.com/v3.1/alpha?codes=${bordersNames.join(',')}`)
+         .then(response => {
+            if (response.status >= 200 && response.status <= 299)
+               return response.json()
+            else isError(true)
+         })
+         .then(response => setBorders(response))
+         .catch(err => console.log(err))
+   }
    if (isLoading) {
       return <h2>Loading...</h2>
    }

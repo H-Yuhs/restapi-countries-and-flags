@@ -45,22 +45,19 @@
   display: flex;
   justify-content: space-between;
 }
-.find input,.find select{
-  border-radius:.25rem;
-  padding: .5em 1.5em;
-  outline: none;
-  border: none;
-  background: var(--lightModeElement);
+.find form{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-radius: .25rem;
+  padding: .5em .75em;
   color: var(--lightModeText);
   box-shadow: 0 0 5px var(--lightModeInput);
 }
-.find input{
-  width:25rem;
-  height:3rem;
-}
-.find select{
-  height:3rem;
-  width:10rem;
+.find input,.find select{
+  outline: none;
+  border: none;
+  background: var(--lightModeElement);
 }
 .card__list{
   display: grid;
@@ -198,4 +195,14 @@
 
 .dark .country__borders .border__list span a {
   color: var(--lightModeInput)
+}
+
+@media screen and (max-width:639px) {
+  .find{
+    flex-direction: column;
+    gap: 1rem;
+  }
+    .find form:nth-child(2){
+      align-self: start;
+    }
 }

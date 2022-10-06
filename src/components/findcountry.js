@@ -1,4 +1,5 @@
 import React from 'react'
+import { BiSearchAlt } from 'react-icons/bi'
 import { useEffect, useRef, useState } from 'react'
 import { ContextUser } from '../hooks/context'
 const Findcountry = () => {
@@ -7,7 +8,7 @@ const Findcountry = () => {
    const [debouncedInput, setDebouncedInput] = useState(searchValue);
    const { setCountries, setIsError, setIsLoading, setKey, returnDefault } = ContextUser()
    useEffect(() => {
-      const timer = setTimeout(() => setSearchvalue(debouncedInput), 500);
+      const timer = setTimeout(() => setSearchvalue(debouncedInput), 300);
       return () => clearTimeout(timer);
    }, [debouncedInput]);
    useEffect(() => {
@@ -38,13 +39,13 @@ const Findcountry = () => {
          <form onSubmit={(e) => {
             e.preventDefault()
          }}>
+            <BiSearchAlt />
             <input type="search" name="search" id="searh" value={searchValue} onChange={(e) => {
                initialRender.current = false
                if (e.target.value) {
                   setDebouncedInput(e.target.value)
                } else {
                   setSearchvalue('')
-                  setKey('all')
                }
             }} placeholder="Search for a country..." />
          </form>
